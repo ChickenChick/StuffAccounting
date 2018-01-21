@@ -10,10 +10,37 @@ using Stuff.DAL.Repositories;
 namespace Stuff.DAL.Controllers
 {
     public class HomeController : Controller
-    {   
+    {
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Change(int id)
+        {
+            using (EmployeeRepository repo = new EmployeeRepository())
+            {
+               return View(repo.Change(id));
+            }
+        }
+        [HttpPost]
+        public ActionResult Change(Employee employee, int id)
+        {
+            using (EmployeeRepository repo = new EmployeeRepository())
+            {
+                repo.Delete(id);
+                repo.Update(employee);
+                return RedirectToAction("Read");
+            }
+        }
+
+            public ActionResult Delete(int id)
+        {
+            using (EmployeeRepository repo = new EmployeeRepository())
+            {
+                repo.Delete(id);
+                return RedirectToAction("Read");
+            }
         }
         [HttpGet]
         public ActionResult Update()

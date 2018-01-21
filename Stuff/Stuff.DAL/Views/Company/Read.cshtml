@@ -1,0 +1,31 @@
+﻿@using Stuff.DAL.Models
+@model IList<Company>
+@{
+    ViewBag.Title = "Read";
+}
+
+<br>
+<a href="@Url.Action("Update", "Company")" class="btn btn-primary"> Добавиить компанию </a>
+<br><br>
+
+<table class="table table-striped">
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Размер</th>
+        <th>Организационная форма</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var n in Model)
+    {
+        <tr>
+            <td>@n.Id</td>
+            <td>@n.Name</td>
+            <td>@n.Size</td>
+            <td>@n.Form</td>
+            <td><a href="@Url.Action("Delete",new { id = n.Id})" class="btn btn-primary"> Удалить </a></td>
+            <td><a href="@Url.Action("Change",new { id = n.Id})" class="btn btn-primary"> Изменить </a></td>
+        </tr>
+    }
+</table>

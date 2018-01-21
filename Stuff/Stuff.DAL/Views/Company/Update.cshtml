@@ -1,0 +1,25 @@
+﻿@model Stuff.DAL.Models.Company
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Новая Компания</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Название")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model=>model.Size,"Размер")
+    <br />
+    @Html.EditorFor(model => model.Size)
+    <br /><br />
+    @Html.LabelFor(model => model.Form, "Организационная форма")
+    <br />
+    @Html.EditorFor(model => model.Form)
+    <br /><br />
+
+    <input type="submit" value="Добавить" />
+}
+

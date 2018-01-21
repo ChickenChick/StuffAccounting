@@ -1,0 +1,28 @@
+﻿@using Stuff.DAL.Models
+@model Employee
+@{
+    ViewBag.Title = "Change";
+}
+
+<h2>Редактирование сотрудка №@Model.Id</h2>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+    @Html.HiddenFor(m => m.Id)
+    <p> @Html.LabelFor(m => m.Name, "Имя")<br />
+        @Html.EditorFor(m => m.Name)</p>
+    <p> @Html.LabelFor(m => m.SurName, "Фамилия")<br />
+        @Html.EditorFor(m => m.SurName)</p>
+    <p> @Html.LabelFor(m => m.MiddleName, "Отчество")<br />
+        @Html.EditorFor(m => m.MiddleName) </p>
+    <p> @Html.LabelFor(m => m.AmploymentDate, "Дата приёма на работу") <br />
+        @Html.EditorFor(m => m.AmploymentDate) </p>
+    <p> @Html.LabelFor(m => m.Position, "Должность") <br />
+        @Html.EditorFor(m => m.Position) </p>
+    <p> @Html.LabelFor(m => m.Company, "Компания") <br />
+        @Html.EditorFor(m => m.Company) </p>
+    <p><input type="submit" value="Отправить" /></p>
+</fieldset>
+}
+
