@@ -1,0 +1,30 @@
+﻿@using Stuff.DAL.Models
+@model IList<Employee>
+@{
+    ViewBag.Title = "Read";
+}
+
+    <th>Номер</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Дата приёма на работу</th>
+    <th>Должность </th>
+    <th>Компания</th>
+
+
+    @foreach (var n in Model)
+    {
+
+        <table>
+            <tr>
+                <td>@n.Id</td>
+                <td>@n.SurName</td>
+                <td>@n.Name</td>
+                <td>@n.MiddleName</td>
+                <td>@n.AmploymentDate</td>
+                <td>@n.Position</td>
+                <td>@n.Company</td>
+            <tr>
+        </table>
+    }

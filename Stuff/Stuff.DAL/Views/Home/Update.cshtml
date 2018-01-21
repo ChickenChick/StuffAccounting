@@ -1,0 +1,41 @@
+﻿@model Stuff.DAL.Models.Employee
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Новый работник</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Id, "Номер")
+    <br />
+    @Html.EditorFor(model => model.Id)
+    <br /><br />
+    @Html.LabelFor(model => model.Name, "Имя")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model => model.SurName, "Фамилия")
+    <br />
+    @Html.EditorFor(model => model.SurName)
+    <br /><br />
+    @Html.LabelFor(model => model.MiddleName, "Отчество")
+    <br />
+    @Html.EditorFor(model => model.MiddleName)
+    <br /><br />
+    @Html.LabelFor(model => model.AmploymentDate, "Дата приёма на работу")
+    <br />
+    @Html.EditorFor(model => model.AmploymentDate)
+    <br /><br />
+    @Html.LabelFor(model => model.Position, "Должность")
+    <br />
+    @Html.EditorFor(model => model.Position)
+    <br /><br />
+    @Html.LabelFor(model => model.Company, "Компания")
+    <br />
+    @Html.EditorFor(model => model.Company)
+    <br /><br />
+
+    <input type="submit" value="Добавить" />
+}
+
