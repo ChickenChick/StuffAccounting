@@ -1,0 +1,64 @@
+﻿@using Stuff.DAL.Models
+@{
+    ViewBag.Title = "Read";
+}
+
+        <br>
+        <a href="@Url.Action("Update", "Home")" class="btn btn-primary"> Добавиить работника </a>
+        <br><br>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Номер</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Дата приёма на работу</th>
+                <th>Должность </th>
+                <th>Компания</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (Employee n in ViewBag.ReadEmpl)
+        {
+            <tr>
+                <td>@n.Id</td>
+                <td>@n.SurName</td>
+                <td>@n.Name</td>
+                <td>@n.MiddleName</td>
+                <td>@n.AmploymentDate</td>
+                <td>@n.Position</td>
+                <td>@n.Company</td>
+                <td><a href="@Url.Action("Delete",new { id = n.Id})" class="btn btn-primary"> Удалить </a></td>
+                <td><a href="@Url.Action("Change",new { id = n.Id})" class="btn btn-primary"> Изменить </a></td>
+            </tr>
+    }
+        </table>
+   
+
+    <br />
+    <a href="@Url.Action("Update", "Company")" class="btn btn-primary"> Добавиить компанию </a>
+    <br><br>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Номер</th>
+            <th>Название</th>
+            <th>Размер</th>
+            <th>Организационная форма</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Company d in ViewBag.ReadComp)
+        {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Name</td>
+            <td>@d.Form</td>
+            <td>@d.Size</td>
+            <td><a href="@Url.Action("Delete","Company",new { id = d.Id})" class="btn btn-primary"> Удалить </a></td>
+            <td><a href="@Url.Action("Change","Company",new { id = d.Id})" class="btn btn-primary"> Изменить </a></td>
+        </tr>
+        }
+    </table>
+</div>

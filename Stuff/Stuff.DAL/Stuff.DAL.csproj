@@ -145,6 +145,7 @@
     <Compile Include="ConnectionApp.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +199,8 @@
     <Content Include="Views\Home\Change.cshtml" />
     <Content Include="Views\Company\Read.cshtml" />
     <Content Include="Views\Company\Update.cshtml" />
+    <Content Include="Views\Company\Change.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

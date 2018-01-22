@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Stuff.DAL.Models;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Stuff.DAL.Repositories
 {
@@ -44,17 +45,36 @@ namespace Stuff.DAL.Repositories
                 int number = command.ExecuteNonQuery();
             }
         }
-            public void Update(Employee employee)
+        public int TransactId()
         {
             string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=EmployeesBD;Integrated Security=True";
-            string sqlExpression = String.Format("INSERT INTO Employees (SurName, Name, MiddleName, EmploymentDate, Position, Company)" +
-            "VALUES ('{0}','{1}','{2}','{3}','{4}',{5})",employee.SurName, employee.Name, employee.MiddleName, employee.AmploymentDate, employee.Position, employee.Company);
+
+            string sqlExpression = "SELECT MAX(Id) FROM Employees";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                object count = command.ExecuteScalar();
+                int i = (int)count;
+                return ++i;
+            }
+        }
+        
+
+            public void Update(Employee employee)
+        {
+            
+            string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=EmployeesBD;Integrated Security=True";
+            string sqlExpression = String.Format("INSERT INTO Employees (SurName, Name, MiddleName, AmploymentDate, Position, Company)" +
+            "VALUES ('{0}','{1}','{2}','{3}','{4}',{5})", employee.SurName, employee.Name, employee.MiddleName, employee.AmploymentDate, employee.Position, employee.Company);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command1 = new SqlCommand(sqlExpression, connection);
+                SqlCommand command1 = new SqlCommand(sqlExpression, connection);               
+
                 int i = command1.ExecuteNonQuery();
+
             }
         }
         public List<Employee> Read()
@@ -70,7 +90,7 @@ namespace Stuff.DAL.Repositories
                     int i = 0;
                     List<Employee> ListData = new List<Employee>();
                 while (reader.Read())
-                {                                   // построчно считываем данные
+                {                               
                     ListData.Add(new Employee());
                     ListData[i].Id = (int)reader.GetValue(0);
                     ListData[i].SurName = (string)reader.GetValue(1);

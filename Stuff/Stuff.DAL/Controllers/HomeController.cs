@@ -45,7 +45,11 @@ namespace Stuff.DAL.Controllers
         [HttpGet]
         public ActionResult Update()
         {
-            return View();
+            EmployeeRepository repo = new EmployeeRepository();
+            {
+                ViewBag.Id = repo.TransactId();
+                return View();
+            }
         }
         [HttpPost]
         public ActionResult Update(Employee employee)
