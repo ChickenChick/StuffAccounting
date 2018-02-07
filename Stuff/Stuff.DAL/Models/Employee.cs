@@ -13,6 +13,7 @@ namespace Stuff.DAL.Models
         public string MiddleName { get; set; }
         public string AmploymentDate { get; set; }
         public string Position { get; set; }
-        public int Company { get; set; }
+        public int CompanyId { get; set; }
+        public string CompanyName { get; set; }
     }
 }

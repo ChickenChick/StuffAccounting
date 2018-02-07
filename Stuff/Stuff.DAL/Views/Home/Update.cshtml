@@ -7,7 +7,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(m => m.Id)
+    @Html.Label("Id Нового работника")
     <br /><br />
     @ViewBag.Id
     <br /><br />
@@ -31,9 +31,9 @@
     <br />
     @Html.EditorFor(model => model.Position)
     <br /><br />
-    @Html.LabelFor(model => model.Company, "Компания")
+    @Html.LabelFor(model => model.CompanyId, "Компания")
     <br />
-    @Html.EditorFor(model => model.Company)
+    @Html.EditorFor(model => model.CompanyId)
     <br /><br />
 
     <input type="submit" value="Добавить" />
